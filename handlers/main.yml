@@ -1,0 +1,8 @@
+---
+- name: plan to restart nginx
+  set_fact:
+    __openresty_nginx_restart: true
+
+- name: plan to reload nginx
+  set_fact:
+    __openresty_nginx_reload: true

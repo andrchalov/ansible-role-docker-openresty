@@ -1,0 +1,15 @@
+---
+- hosts: all
+  roles:
+    - name: role_under_test
+      openresty_default_server: true
+
+  post_tasks:
+    - name: Create index.html
+      copy:
+        content: "OK"
+        dest: "/srv/openresty/site/index.html"
+
+    - name: Check openresty working
+      uri:
+        url: http://localhost

@@ -1,0 +1,6 @@
+---
+- name: Openresty container uninstalled
+  docker_container:
+    name: "{{openresty_docker_name}}"
+    image: "{{openresty_docker_image}}"
+    state: absent

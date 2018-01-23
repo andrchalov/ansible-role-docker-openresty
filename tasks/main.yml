@@ -1,0 +1,6 @@
+---
+- include_tasks: install.yml
+  when: openresty_groups is not defined or (openresty_groups | intersect(group_names)) != []
+
+- include_tasks: uninstall.yml
+  when: openresty_groups is defined and (openresty_groups | intersect(group_names)) == []

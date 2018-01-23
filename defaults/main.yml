@@ -1,0 +1,22 @@
+---
+openresty_path: "/srv/openresty"
+openresty_docker_image: "andrchalov/openresty:latest"
+openresty_docker_name: openresty
+openresty_docker_volumes:
+  - "{{openresty_path}}/conf:/mnt/conf:ro"
+  - "{{openresty_path}}/logs:/mnt/logs:rw"
+  - "{{openresty_path}}/ssl:/mnt/ssl:ro"
+  - "{{openresty_path}}/site:/mnt/site:ro"
+
+openresty_nginx_worker_processes: 1
+openresty_nginx_worker_connections: 1024
+openresty_nginx_sendfile: "on"
+openresty_nginx_keepalive_timeout: 65
+
+openresty_default_server: false
+
+openresty_published_ports:
+  - "80:80"
+  - "443:443"
+
+openresty_exposed_ports: []

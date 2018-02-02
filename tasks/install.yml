@@ -40,8 +40,10 @@
   docker_container:
     name: "{{openresty_docker_name}}"
     image: "{{openresty_docker_image}}"
-    volumes: "{{openresty_docker_volumes}}"
+    volumes: "{{openresty_docker_volumes}} + {{openresty_docker_volumes_extra}}"
     env:
+      LOCAL_USER_ID: "{{openresty_docker_uid}}"
+      LOCAL_GROUP_ID: "{{openresty_docker_gid}}"
       NGX_CONFIG: /mnt/conf
     published_ports: "{{openresty_published_ports}}"
     exposed_ports: "{{openresty_exposed_ports}}"

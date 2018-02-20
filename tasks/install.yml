@@ -45,6 +45,7 @@
       LOCAL_USER_ID: "{{openresty_docker_uid}}"
       LOCAL_GROUP_ID: "{{openresty_docker_gid}}"
       NGX_CONFIG: /mnt/conf
+    network_mode: "{{openresty_docker_network_mode}}"
     published_ports: "{{openresty_published_ports}}"
     exposed_ports: "{{openresty_exposed_ports}}"
     restart_policy: always

@@ -1,6 +1,6 @@
 ---
 openresty_path: "/srv/openresty"
-openresty_docker_image: "andrchalov/openresty:latest"
+openresty_docker_image: "andrchalov/docker-openresty:1.11.2.2"
 openresty_docker_name: openresty
 openresty_docker_network_mode: bridge
 openresty_docker_uid: 999

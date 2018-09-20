@@ -10,6 +10,8 @@ openresty_docker_volumes:
   - "{{openresty_path}}/logs:/mnt/logs:rw"
   - "{{openresty_path}}/ssl:/mnt/ssl:ro"
   - "{{openresty_path}}/site:/mnt/site:ro"
+  - "{{openresty_path}}/auto-ssl:/mnt/auto-ssl:rw"
+
 openresty_docker_volumes_extra: []
 
 openresty_nginx_worker_processes: 1

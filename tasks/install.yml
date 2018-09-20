@@ -10,7 +10,19 @@
     - ssl
     - logs
     - site
+    - auto-ssl
   notify: plan to restart nginx
+
+- name: Create openresty auto-ssl folders
+  file:
+    dest={{openresty_path}}/auto-ssl/{{item}}
+    mode=700
+    owner={{openresty_docker_uid}}
+    group={{openresty_docker_gid}}
+    state=directory
+  with_items:
+    - storage
+    - storage/file
 
 - name: Create nginx config
   template:

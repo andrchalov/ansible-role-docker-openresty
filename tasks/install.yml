@@ -54,8 +54,8 @@
     image: "{{openresty_docker_image}}"
     volumes: "{{openresty_docker_volumes}} + {{openresty_docker_volumes_extra}}"
     env:
-      LOCAL_USER_ID: "{{openresty_docker_uid}}"
-      LOCAL_GROUP_ID: "{{openresty_docker_gid}}"
+      LOCAL_USER_ID: "{{openresty_docker_uid|int}}"
+      LOCAL_GROUP_ID: "{{openresty_docker_gid|int}}"
       NGX_CONFIG: /mnt/conf
     network_mode: "{{openresty_docker_network_mode}}"
     published_ports: "{{openresty_published_ports}}"

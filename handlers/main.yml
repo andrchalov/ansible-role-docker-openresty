@@ -1,8 +1,14 @@
 ---
-- name: plan to restart nginx
+- name: plan to restart openresty
   set_fact:
-    __openresty_nginx_restart: true
+    __openresty_restart: true
 
-- name: plan to reload nginx
+- name: plan to reload openresty
   set_fact:
-    __openresty_nginx_reload: true
+    __openresty_reload: true
+
+- name: reload openresty
+  shell: >
+    docker exec {{openresty_docker_name}} nginx -s reload && echo 'yes'
+  register: __reload_openresty
+  changed_when: (__reload_openresty.stdout_lines | last) == 'yes'

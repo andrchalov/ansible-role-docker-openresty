@@ -33,7 +33,7 @@
 - meta: flush_handlers
 
 # try to soft reload nginx when openresty is running
-- name: Reload nginx
+- name: Reload openresty
   shell: >
     docker inspect {{openresty_docker_name}} \
     && (docker exec {{openresty_docker_name}} nginx -s reload && echo 'yes') \
@@ -42,11 +42,11 @@
   changed_when: (__openresty_reload_status.stdout_lines | last) == 'yes'
   when: __openresty_reload | default(false)
 
-- name: Plan to restart nginx if reload failed
+- name: Plan to restart openresty if reload failed
   set_fact:
     __openresty_restart: true
   changed_when: true
-  when: "(__openresty_reload | default(false)) and not (__openresty_reload_status | changed)"
+  when: "(__openresty_reload | default(false)) and not (__openresty_reload_status is changed)"
 
 - name: Openresty container installed
   docker_container:
